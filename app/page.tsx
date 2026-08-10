@@ -8,6 +8,7 @@ import { createClient } from "@/utils/supabase/server";
 import AnimatedSection from "@/components/AnimatedSection";
 import HeroHandshake from "@/components/HeroHandshake";
 import { Cpu, Terminal, Database, Cloud, Code, BarChart } from "lucide-react";
+import OperationsMonitor from "@/components/OperationsMonitor";
 
 export const metadata: Metadata = {
   title: "Bhawuk Arora ( ^__^ )",
@@ -47,50 +48,54 @@ export default async function HomePage() {
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_2px_2px,var(--border)_1px,transparent_0)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
 
-          <div className="relative z-10">
-
-
-            <div className="max-w-4xl">
-              <h1 className="text-6xl sm:text-7xl md:text-9xl font-black tracking-tighter mb-6 text-[var(--text-primary)] leading-[0.85]">
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-4 text-[var(--text-primary)] leading-[0.9] font-heading">
                 Bhawuk <span className="text-[var(--accent-blue)]">Arora.</span>
               </h1>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-8 text-[var(--text-secondary)]">
-                MLOps & Systems Engineering.
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-6 text-[var(--text-secondary)] font-heading">
+                MLOps & Systems Engineering
               </h2>
 
-              <p className="text-lg md:text-xl text-[var(--text-muted)] leading-relaxed max-w-2xl mb-12 font-medium">
+              <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-xl font-medium">
                 Corporate Kid in Tech ;)
+                <span className="block mt-2 text-sm text-[var(--text-secondary)]">
+                  Architecting automated ML workflows, scaling reliable distributed infrastructure, and designing cloud-native systems.
+                </span>
               </p>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <Link
+                  href="/projects"
+                  className="relative overflow-hidden px-8 py-3.5 rounded-xl text-white bg-blue-600 hover:bg-blue-500 transition-all font-bold shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 group border border-blue-400/15 text-sm cursor-pointer"
+                >
+                  <span className="relative z-10">View My Work</span>
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform relative z-10" />
+                </Link>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <a
+                    href="https://res.cloudinary.com/bhawuk-prod/image/upload/v1759812546/bhawuk-portfolio-react/bhawuk_resume.jpg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-5 py-3.5 rounded-xl text-[var(--accent-blue)] bg-blue-500/5 border border-blue-500/15 hover:border-blue-500/40 hover:bg-blue-500/10 backdrop-blur-sm transition-all font-bold text-center flex items-center justify-center gap-2 group/btn text-sm"
+                  >
+                    <span>Resume</span>
+                    <ExternalLink size={14} className="opacity-40 group-hover/btn:opacity-100 group-hover/btn:translate-y-[-1px] transition-all" />
+                  </a>
+                  <Link
+                    href="/blog"
+                    className="px-5 py-3.5 rounded-xl text-[var(--text-primary)] bg-[var(--bg-elevated)] border border-[var(--border)] hover:border-[var(--text-muted)] hover:bg-[var(--bg-card)] backdrop-blur-sm transition-all font-bold text-center flex items-center justify-center gap-2 group/blog text-sm"
+                  >
+                    <Calendar size={14} className="text-[var(--text-muted)] group-hover/blog:text-[var(--accent-blue)] transition-colors" />
+                    <span>Blog</span>
+                  </Link>
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-16">
-              <Link
-                href="/projects"
-                className="relative overflow-hidden px-10 py-4.5 rounded-2xl text-white bg-blue-600 hover:bg-blue-500 transition-all font-bold shadow-[0_0_25px_rgba(37,99,235,0.25)] hover:shadow-[0_0_35px_rgba(37,99,235,0.45)] hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-3 group border border-blue-400/20"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite] pointer-events-none" />
-                <span className="relative z-10">View My Work</span>
-                <ArrowRight size={20} className="group-hover:translate-x-1.5 transition-transform relative z-10" />
-              </Link>
-
-              <div className="grid grid-cols-2 gap-4">
-                <a
-                  href="https://res.cloudinary.com/bhawuk-prod/image/upload/v1759812546/bhawuk-portfolio-react/bhawuk_resume.jpg"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-6 sm:px-8 py-4 rounded-2xl text-[var(--accent-blue)] bg-blue-500/5 border border-blue-500/20 hover:border-blue-500/50 hover:bg-blue-500/10 backdrop-blur-sm transition-all font-bold text-center flex items-center justify-center gap-2 group/btn shadow-sm"
-                >
-                  <span className="text-sm sm:text-base">Resume</span>
-                  <ExternalLink size={16} className="opacity-40 group-hover/btn:opacity-100 group-hover/btn:translate-y-[-1px] transition-all" />
-                </a>
-                <Link
-                  href="/blog"
-                  className="px-6 sm:px-8 py-4 rounded-2xl text-[var(--text-primary)] bg-[var(--bg-elevated)] border border-[var(--border)] hover:border-[var(--text-muted)] hover:bg-[var(--bg-card)] backdrop-blur-sm transition-all font-bold text-center text-sm sm:text-base flex items-center justify-center gap-2 group/blog shadow-sm"
-                >
-                  <Calendar size={16} className="text-[var(--text-muted)] group-hover/blog:text-[var(--accent-blue)] transition-colors" />
-                  <span>Blog</span>
-                </Link>
-              </div>
+            <div className="lg:col-span-5 w-full">
+              <OperationsMonitor />
             </div>
           </div>
         </section>
