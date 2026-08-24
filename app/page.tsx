@@ -80,7 +80,7 @@ export default async function HomePage() {
                   <a
                     // COMMENTED OUT: Previous Cloudinary link
                     // href="https://res.cloudinary.com/bhawuk-prod/image/upload/v1759812546/bhawuk-portfolio-react/bhawuk_resume.jpg"
-                    href="/bhawuk_resume.pdf"
+                    href="/Bhawuk_Arora_Resume.pdf"
                     download="Bhawuk_Arora_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
