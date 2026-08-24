@@ -9,14 +9,19 @@ export const metadata: Metadata = {
         "Deep dives into MLOps, Distributed Systems, and High-Performance Infrastructure by Bhawuk Arora.",
 };
 
-// Enable ISR (Incremental Static Regeneration) - Revalidate every 60 seconds
+// Enable ISR (Incremental Static Regeneration) - Revalidate cache every 60 seconds
 export const revalidate = 60;
 
 export default async function BlogPage() {
-    const supabase = createSupabaseClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-    );
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+        console.warn("Supabase credentials missing on Blog list page. Rendering empty list.");
+        return <BlogClient initialPosts={[]} />;
+    }
+
+    const supabase = createSupabaseClient(supabaseUrl, supabaseAnonKey);
 
     const { data } = await supabase
         .from('posts')
