@@ -81,6 +81,7 @@ export default async function HomePage() {
                     // COMMENTED OUT: Previous Cloudinary link
                     // href="https://res.cloudinary.com/bhawuk-prod/image/upload/v1759812546/bhawuk-portfolio-react/bhawuk_resume.jpg"
                     href="/bhawuk_resume.pdf"
+                    download="Bhawuk_Arora_Resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-5 py-3.5 rounded-xl text-[var(--accent-blue)] bg-blue-500/5 border border-blue-500/15 hover:border-blue-500/40 hover:bg-blue-500/10 backdrop-blur-sm transition-all font-bold text-center flex items-center justify-center gap-2 group/btn text-sm"
