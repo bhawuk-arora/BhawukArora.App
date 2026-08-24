@@ -8,11 +8,11 @@ import { createClient } from "@/utils/supabase/server";
 import AnimatedSection from "@/components/AnimatedSection";
 import HeroHandshake from "@/components/HeroHandshake";
 import { Cpu, Terminal, Database, Cloud, Code, BarChart } from "lucide-react";
-import OperationsMonitor from "@/components/OperationsMonitor";
+// COMMENTED OUT: import OperationsMonitor from "@/components/OperationsMonitor";
 
 export const metadata: Metadata = {
-  title: "Bhawuk Arora ( ^__^ )",
-  description: "Corporate Kid in Tech ;)",
+  title: "Bhawuk Arora",
+  description: "Software Engineer specializing in MLOps, Distributed Systems, and Cloud Infrastructure.",
 };
 
 
@@ -58,10 +58,13 @@ export default async function HomePage() {
               </h2>
 
               <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-xl font-medium">
-                Corporate Kid in Tech ;)
+                {/* COMMENTED OUT: Corporate Kid in Tech ;) */}
+                Software Engineer specializing in MLOps, Distributed Systems, and Cloud Native infrastructure.
+                {/* COMMENTED OUT: Removed sub-description line
                 <span className="block mt-2 text-sm text-[var(--text-secondary)]">
                   Architecting automated ML workflows, scaling reliable distributed infrastructure, and designing cloud-native systems.
                 </span>
+                */}
               </p>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
@@ -75,7 +78,9 @@ export default async function HomePage() {
 
                 <div className="grid grid-cols-2 gap-3">
                   <a
-                    href="https://res.cloudinary.com/bhawuk-prod/image/upload/v1759812546/bhawuk-portfolio-react/bhawuk_resume.jpg"
+                    // COMMENTED OUT: Previous Cloudinary link
+                    // href="https://res.cloudinary.com/bhawuk-prod/image/upload/v1759812546/bhawuk-portfolio-react/bhawuk_resume.jpg"
+                    href="/bhawuk_resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="px-5 py-3.5 rounded-xl text-[var(--accent-blue)] bg-blue-500/5 border border-blue-500/15 hover:border-blue-500/40 hover:bg-blue-500/10 backdrop-blur-sm transition-all font-bold text-center flex items-center justify-center gap-2 group/btn text-sm"
@@ -94,59 +99,21 @@ export default async function HomePage() {
               </div>
             </div>
 
+            {/* COMMENTED OUT: HeroHandshake component is removed from here
+            <div className="lg:col-span-5 w-full flex items-center justify-center">
+              <HeroHandshake />
+            </div>
+            */}
+
+            {/* COMMENTED OUT: OperationsMonitor component was previously here
             <div className="lg:col-span-5 w-full">
               <OperationsMonitor />
             </div>
+            */}
           </div>
         </section>
 
-        {/* FEATURED POST */}
-        <section className="mb-24">
-          <div className="flex items-center justify-between mb-8 border-b border-[var(--border)] pb-4">
-            <h2 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">My Thoughts</h2>
-            <Link href="/blog" className="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent-blue)] flex items-center gap-1.5 transition-colors group">
-              View Blog <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {typedPosts.slice(0, 4).map((post, i) => (
-              <AnimatedSection key={post.slug} delay={i * 100}>
-                <Link href={`/blog/${post.slug}`} className="group block h-full outline-none">
-                  <article className="p-6 sm:p-8 rounded-2xl bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent-blue)]/50 transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:shadow-2xl hover:shadow-blue-500/5 group/card">
-                    {/* Technical Accent */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[60px] opacity-0 group-hover/card:opacity-100 transition-opacity" />
-
-                    <div className="flex items-center gap-3 mb-6 font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest">
-                      <span className="text-[var(--accent-blue)] font-bold border border-[var(--accent-blue)]/30 bg-[var(--accent-blue)]/10 px-2.5 py-1 rounded-md tracking-wider">{post.category}</span>
-                      <span>{formatDate(post.publishedAt)}</span>
-                    </div>
-
-                    <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] group-hover/card:text-[var(--accent-blue)] transition-colors mb-4 tracking-tight leading-tight">
-                      {post.title}
-                    </h3>
-
-                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-8 line-clamp-3 font-medium">
-                      {post.description}
-                    </p>
-
-                    <div className="mt-auto flex items-center justify-between">
-                      <div className="flex items-center gap-2 font-mono text-[10px] text-[var(--accent-blue)] font-bold uppercase tracking-widest">
-                        Examine Logic <ArrowRight size={12} className="group-hover/card:translate-x-1 transition-transform" />
-                      </div>
-                      <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-tighter opacity-70">{post.readingTime}m runtime</span>
-                    </div>
-                  </article>
-                </Link>
-              </AnimatedSection>
-            ))}
-          </div>
-        </section>
-        <AnimatedSection>
-          <div className="mb-24">
-            <HeroHandshake />
-          </div>
-        </AnimatedSection>
 
         <section className="mb-24">
           <div className="flex items-center justify-between mb-8 border-b border-[var(--border)] pb-4">
@@ -321,6 +288,49 @@ export default async function HomePage() {
                     <p className="text-[10px] font-medium text-[var(--text-muted)]">{cert.issuer}</p>
                   </div>
                 </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </section>
+
+        {/* FEATURED POST */}
+        <section className="mb-24">
+          <div className="flex items-center justify-between mb-8 border-b border-[var(--border)] pb-4">
+            <h2 className="text-xl font-bold text-[var(--text-primary)] tracking-tight">My Thoughts</h2>
+            <Link href="/blog" className="text-sm font-medium text-[var(--text-secondary)] hover:text-[var(--accent-blue)] flex items-center gap-1.5 transition-colors group">
+              View Blog <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {typedPosts.slice(0, 4).map((post, i) => (
+              <AnimatedSection key={post.slug} delay={i * 100}>
+                <Link href={`/blog/${post.slug}`} className="group block h-full outline-none">
+                  <article className="p-6 sm:p-8 rounded-2xl bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent-blue)]/50 transition-all duration-300 relative overflow-hidden h-full flex flex-col hover:shadow-2xl hover:shadow-blue-500/5 group/card">
+                    {/* Technical Accent */}
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[60px] opacity-0 group-hover/card:opacity-100 transition-opacity" />
+
+                    <div className="flex items-center gap-3 mb-6 font-mono text-[10px] text-[var(--text-muted)] uppercase tracking-widest">
+                      <span className="text-[var(--accent-blue)] font-bold border border-[var(--accent-blue)]/30 bg-[var(--accent-blue)]/10 px-2.5 py-1 rounded-md tracking-wider">{post.category}</span>
+                      <span>{formatDate(post.publishedAt)}</span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl font-bold text-[var(--text-primary)] group-hover/card:text-[var(--accent-blue)] transition-colors mb-4 tracking-tight leading-tight">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-[var(--text-secondary)] text-sm leading-relaxed mb-8 line-clamp-3 font-medium">
+                      {post.description}
+                    </p>
+
+                    <div className="mt-auto flex items-center justify-between">
+                      <div className="flex items-center gap-2 font-mono text-[10px] text-[var(--accent-blue)] font-bold uppercase tracking-widest">
+                        Examine Logic <ArrowRight size={12} className="group-hover/card:translate-x-1 transition-transform" />
+                      </div>
+                      <span className="text-[10px] font-mono text-[var(--text-muted)] uppercase tracking-tighter opacity-70">{post.readingTime}m runtime</span>
+                    </div>
+                  </article>
+                </Link>
               </AnimatedSection>
             ))}
           </div>

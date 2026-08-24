@@ -21,6 +21,8 @@ export const proxy = clerkMiddleware(async (auth, req) => {
     return NextResponse.rewrite(url);
   }
 
+  /*
+  // COMMENTED OUT: Removed routing/redirect from main domain to blog.bhawukarora.app subdomain for /blog path
   // Redirect /blog to blog subdomain ONLY in production
   const isDev = process.env.NODE_ENV === 'development';
   if (!isDev) {
@@ -32,6 +34,7 @@ export const proxy = clerkMiddleware(async (auth, req) => {
       return NextResponse.redirect(new URL(`https://blog.bhawukarora.app/${slug}`, req.url));
     }
   }
+  */
 
   return NextResponse.next();
 });

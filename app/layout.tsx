@@ -9,11 +9,11 @@ import { ClerkProvider } from '@clerk/nextjs';
 
 export const metadata: Metadata = {
   title: {
-    default: "Bhawuk Arora (^__^)",
+    default: "Bhawuk Arora",
     template: "%s | Bhawuk Arora",
   },
   description:
-    "Corporate Kid in Tech ;)",
+    "Software Engineer specializing in MLOps, Distributed Systems, and Cloud Infrastructure.",
   keywords: [
     "Bhawuk Arora",
     "MLOps Engineer",
@@ -65,7 +65,7 @@ function SiteFooter() {
     <footer className="border-t border-[var(--border)] bg-[var(--bg-secondary)] mt-auto">
       <div className="max-w-5xl mx-auto px-6 md:px-8 py-10 flex flex-wrap items-center justify-between gap-4">
         <p className="text-sm font-medium text-[var(--text-muted)] flex items-center gap-1.5">
-          Made with <Heart size={14} className="text-red-500 fill-red-500" /> by Bhawuk Arora (^__^)
+          Made with <Heart size={14} className="text-red-500 fill-red-500" /> by Bhawuk Arora
         </p>
 
         <div className="flex gap-6">

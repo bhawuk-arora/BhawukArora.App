@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Bell, CheckCircle } from 'lucide-react';
-import { subscribeToNewsletter } from '@/app/actions/newsletter';
+// COMMENTED OUT: import { subscribeToNewsletter } from '@/app/actions/newsletter';
 
 export default function NewsletterModal() {
     const [isOpen, setIsOpen] = useState(false);
@@ -29,6 +29,10 @@ export default function NewsletterModal() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!email) return;
+
+        /*
+        // COMMENTED OUT: Supabase subscription logic
         setStatus('submitting');
 
         const formData = new FormData();
@@ -44,6 +48,18 @@ export default function NewsletterModal() {
             setStatus('error');
             setMessage(result.error || 'Something went wrong');
         }
+        */
+
+        // Route to email client via mailto
+        const subject = encodeURIComponent("Portfolio Connection Request");
+        const body = encodeURIComponent(`Hello Bhawuk,\n\nI visited your portfolio and would like to connect.\n\nMy Email: ${email}`);
+        const mailtoUrl = `mailto:contact@bhawukarora.app?subject=${subject}&body=${body}`;
+        
+        window.location.href = mailtoUrl;
+
+        setStatus('success');
+        localStorage.setItem('bhawuk_subscribed', 'true');
+        setTimeout(() => setIsOpen(false), 3000);
     };
 
     return (
