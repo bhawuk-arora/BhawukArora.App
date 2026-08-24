@@ -104,7 +104,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: Post[] }) {
                     Technical / <br />
                     <span className="text-[var(--accent-blue)]">Blog.</span>
                 </h1>
-                <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl border-l-2 border-[var(--border)] pl-4 sm:pl-6 py-1">
+                <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed max-w-2xl py-1">
                     Essays on building scalable ML infrastructure, cloud architecture, and the craft of engineering.
                 </p>
 

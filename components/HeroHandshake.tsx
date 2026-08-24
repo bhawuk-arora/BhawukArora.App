@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, CheckCircle, AtSign, ArrowRight } from 'lucide-react';
-import { subscribeToNewsletter } from '@/app/actions/newsletter';
+// COMMENTED OUT: import { subscribeToNewsletter } from '@/app/actions/newsletter';
 
 export default function HeroHandshake() {
     const [email, setEmail] = useState('');
@@ -12,6 +12,10 @@ export default function HeroHandshake() {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!email) return;
+
+        /*
+        // COMMENTED OUT: Supabase subscription logic
         setStatus('submitting');
 
         const formData = new FormData();
@@ -26,6 +30,15 @@ export default function HeroHandshake() {
             setStatus('error');
             setError(result.error || 'Handshake failed');
         }
+        */
+
+        // Route to email client via mailto
+        const subject = encodeURIComponent("Portfolio Connection Request");
+        const body = encodeURIComponent(`Hello Bhawuk,\n\nI visited your portfolio and would like to connect.\n\nMy Email: ${email}`);
+        const mailtoUrl = `mailto:contact@bhawukarora.app?subject=${subject}&body=${body}`;
+        
+        window.location.href = mailtoUrl;
+        setStatus('success');
     };
 
     if (status === 'success') {
@@ -39,8 +52,8 @@ export default function HeroHandshake() {
                     <CheckCircle size={20} />
                 </div>
                 <div>
-                    <h3 className="text-sm font-bold text-green-400 uppercase tracking-widest font-mono">Protocol Active</h3>
-                    <p className="text-xs text-[var(--text-muted)] mt-1">Handshake successful. You're now in the sync loop.</p>
+                    <h3 className="text-sm font-bold text-green-400 uppercase tracking-widest font-mono">Link Routing Active</h3>
+                    <p className="text-xs text-[var(--text-muted)] mt-1">Opening your email client to complete the message.</p>
                 </div>
             </motion.div>
         );

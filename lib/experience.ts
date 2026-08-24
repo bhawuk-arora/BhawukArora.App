@@ -28,7 +28,7 @@ export interface Certification {
 
 export const workExperience: Job[] = [
     {
-        title: "Junior Associate - DevOps and App Modernisation",
+        title: "Software Engineer - DevOps and App Modernisation",
         company: "Celebal Technologies",
         period: "Nov 2025 - Present",
         location: "Jaipur, Rajasthan, India",
@@ -45,7 +45,9 @@ export const education: Education[] = [
         period: "November 2022 - May 2026 (Expected)",
         location: "Jaipur, Rajasthan, India",
         grade: "CGPA: 9.08",
-        description: "Building a rigorous foundation in Machine Learning and Systems Engineering, with a specialized focus on the architectures that power modern AI at scale.",
+        // COMMENTED OUT: Description removed per request
+        // description: "Building a rigorous foundation in Machine Learning and Systems Engineering, with a specialized focus on the architectures that power modern AI at scale.",
+        description: "",
         icon: "college"
     }
 ];
@@ -53,6 +55,20 @@ export const education: Education[] = [
 export const certifications: Certification[] = [
     {
         name: "Microsoft Certified: Azure Developer Associate",
+        issuer: "Microsoft",
+        icon: "azure",
+        color: "blue",
+        link: ""
+    },
+    {
+        name: "Microsoft Certified: Azure Administrator Associate",
+        issuer: "Microsoft",
+        icon: "azure",
+        color: "blue",
+        link: ""
+    },
+    {
+        name: "Microsoft Certified: Fabric Data Engineer Associate",
         issuer: "Microsoft",
         icon: "azure",
         color: "blue",

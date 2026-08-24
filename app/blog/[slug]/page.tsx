@@ -2,19 +2,40 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Post } from "@/lib/data";
 import ArticleClient from "@/components/ArticleClient";
-import { createClient } from "@/utils/supabase/server";
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
+const supabase = createSupabaseClient(supabaseUrl, supabaseAnonKey);
 
 interface Props {
     params: Promise<{ slug: string }>;
 }
 
-// Ensure the page is dynamic so it fetches the latest data from Supabase
-export const dynamic = 'force-dynamic';
+// Enable ISR (Incremental Static Regeneration) - Revalidate cache every 60 seconds
+export const revalidate = 60;
+
+// generateStaticParams runs at build time to statically generate all slug routes
+export async function generateStaticParams() {
+    try {
+        const { data: posts } = await supabase
+            .from('posts')
+            .select('slug')
+            .eq('enabled', true);
+
+        return (posts || []).map((post) => ({
+            slug: post.slug,
+        }));
+    } catch (e) {
+        console.error("Error in generateStaticParams:", e);
+        return [];
+    }
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     try {
         const { slug } = await params;
-        const supabase = await createClient();
         const { data: post, error } = await supabase
             .from('posts')
             .select('*')
@@ -43,7 +64,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
     const { slug } = await params;
-    const supabase = await createClient();
 
     const { data, error } = await supabase
         .from('posts')

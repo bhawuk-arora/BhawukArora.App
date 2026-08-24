@@ -27,7 +27,7 @@ export default function ProjectsPage() {
                                 Systems / <br />
                                 <span className="text-[var(--accent-blue)]">Solutions.</span>
                             </h1>
-                            <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed border-l-2 border-[var(--border)] pl-6 py-1">
+                            <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed py-1">
                                 High-performance infrastructure, MLOps pipelines, and cloud-native solutions architected for scale.
                             </p>
                         </div>

@@ -36,15 +36,22 @@ export default function Navbar() {
     };
 
     const getLinkHref = (href: string) => {
+        // COMMENTED OUT: Subdomain link rewriting. Now routing locally on all environments.
+        /*
         if (!isBlogDomain) {
-            if (href === '/blog') return 'https://blog.bhawukarora.app';
+            // COMMENTED OUT: Redirecting /blog link to blog subdomain. Now routing to /blog directly on main domain.
+            // if (href === '/blog') return 'https://blog.bhawukarora.app';
             return href;
         } else {
             if (href === '/blog') return '/';
             return `https://bhawukarora.app${href === '/' ? '' : href}`;
         }
+        */
+        return href;
     };
 
+    // COMMENTED OUT: Conditional links for blog domain. Using uniform navigation on all environments.
+    /*
     const navLinks = isBlogDomain 
         ? [
             { href: '/', label: 'Home' },
@@ -58,6 +65,14 @@ export default function Navbar() {
             { href: '/about', label: 'About' },
             { href: '/contact', label: 'Contact' },
           ];
+    */
+    const navLinks = [
+        { href: '/', label: 'Home' },
+        { href: '/projects', label: 'Work' },
+        { href: '/blog', label: 'Blog' },
+        { href: '/about', label: 'About' },
+        { href: '/contact', label: 'Contact' },
+    ];
 
     return (
         <>
