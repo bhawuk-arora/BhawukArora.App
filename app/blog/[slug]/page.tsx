@@ -4,11 +4,6 @@ import { Post } from "@/lib/data";
 import ArticleClient from "@/components/ArticleClient";
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-
-const supabase = createSupabaseClient(supabaseUrl, supabaseAnonKey);
-
 interface Props {
     params: Promise<{ slug: string }>;
 }
@@ -16,8 +11,24 @@ interface Props {
 // Enable ISR (Incremental Static Regeneration) - Revalidate cache every 60 seconds
 export const revalidate = 60;
 
+function getStaticClient() {
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseAnonKey) {
+        return null;
+    }
+    return createSupabaseClient(supabaseUrl, supabaseAnonKey);
+}
+
 // generateStaticParams runs at build time to statically generate all slug routes
 export async function generateStaticParams() {
+    const supabase = getStaticClient();
+    if (!supabase) {
+        console.warn("Supabase credentials missing during build time static generation. Skipping generateStaticParams.");
+        return [];
+    }
+
     try {
         const { data: posts } = await supabase
             .from('posts')
@@ -36,6 +47,11 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     try {
         const { slug } = await params;
+        const supabase = getStaticClient();
+        if (!supabase) {
+            return { title: "Blog Post" };
+        }
+
         const { data: post, error } = await supabase
             .from('posts')
             .select('*')
@@ -64,6 +80,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ArticlePage({ params }: Props) {
     const { slug } = await params;
+    const supabase = getStaticClient();
+
+    if (!supabase) {
+        console.warn("Supabase credentials missing during ArticlePage execution.");
+        return notFound();
+    }
 
     const { data, error } = await supabase
         .from('posts')
