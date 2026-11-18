@@ -39,110 +39,98 @@ const ContactForm = () => {
     };
 
     return (
-        <div className="w-full max-w-md mx-auto px-4 py-8">
-            <div className="text-center mb-8">
-                <h1 className="text-4xl font-black text-[var(--text-primary)] tracking-tight mb-3">
-                    Say <span className="text-[var(--accent-blue)]">Hello.</span>
+        <div className="w-full max-w-lg mx-auto py-4">
+            <div className="mb-10 text-center sm:text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono font-medium mb-4">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>CHANNELS // OPEN FOR INQUIRIES</span>
+                </div>
+                <h1 className="text-4xl sm:text-5xl font-black text-[var(--text-primary)] tracking-tight mb-3 font-heading">
+                    Let&apos;s Connect<span className="text-[var(--accent-blue)]">.</span>
                 </h1>
-                <p className="text-sm text-[var(--text-secondary)]">
-                    Feel free to reach out for collaborations, project inquiries, or just to say hello.
+                <p className="text-sm sm:text-base text-[var(--text-secondary)] leading-relaxed">
+                    Open for discussions regarding distributed systems, MLOps architecture, production reliability, or engineering opportunities.
                 </p>
             </div>
 
-            <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-xl p-6 sm:p-8 shadow-sm">
+            <div className="bg-[var(--bg-card)] border border-[var(--border)] rounded-2xl p-6 sm:p-8 shadow-xl relative overflow-hidden backdrop-blur-sm">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 blur-[50px] pointer-events-none" />
                 {!isSubmitted ? (
-                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-                        <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-[var(--text-secondary)]">Name</label>
+                    <form ref={formRef} onSubmit={handleSubmit} className="space-y-5 relative z-10">
+                        <div className="space-y-2">
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">Name</label>
                             <input
                                 required
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleInputChange}
-                                className="w-full px-3 py-2 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-blue)] outline-none text-sm transition-all"
-                                placeholder="Name"
+                                className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-blue)] focus:ring-1 focus:ring-blue-500/50 outline-none text-sm transition-all"
+                                placeholder="Your name"
                             />
                         </div>
 
-                        <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-[var(--text-secondary)]">Email</label>
+                        <div className="space-y-2">
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">Email Address</label>
                             <input
                                 required
                                 type="email"
                                 name="email"
                                 value={formData.email}
                                 onChange={handleInputChange}
-                                className="w-full px-3 py-2 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-blue)] outline-none text-sm transition-all"
-                                placeholder="Email"
+                                className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-blue)] focus:ring-1 focus:ring-blue-500/50 outline-none text-sm transition-all"
+                                placeholder="name@domain.com"
                             />
                         </div>
 
-                        <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-[var(--text-secondary)]">Subject</label>
+                        <div className="space-y-2">
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">Subject</label>
                             <input
                                 required
                                 type="text"
                                 name="subject"
                                 value={formData.subject}
                                 onChange={handleInputChange}
-                                className="w-full px-3 py-2 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-blue)] outline-none text-sm transition-all"
-                                placeholder="Subject"
+                                className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-blue)] focus:ring-1 focus:ring-blue-500/50 outline-none text-sm transition-all"
+                                placeholder="System design / Consulting / Hello"
                             />
                         </div>
 
-                        <div className="space-y-1.5">
-                            <label className="block text-sm font-medium text-[var(--text-secondary)]">Message</label>
+                        <div className="space-y-2">
+                            <label className="block text-xs font-mono uppercase tracking-wider text-[var(--text-secondary)]">Message</label>
                             <textarea
                                 required
                                 name="message"
+                                rows={4}
                                 value={formData.message}
                                 onChange={handleInputChange}
-                                rows={5}
-                                className="w-full px-3 py-2 rounded-lg bg-[var(--bg)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-blue)] outline-none text-sm transition-all resize-none leading-relaxed"
-                                placeholder="Message"
+                                className="w-full px-4 py-3 rounded-xl bg-[var(--bg-secondary)] border border-[var(--border)] text-[var(--text-primary)] focus:border-[var(--accent-blue)] focus:ring-1 focus:ring-blue-500/50 outline-none text-sm transition-all resize-none"
+                                placeholder="Your message..."
                             />
                         </div>
 
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className="w-full h-10 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all disabled:opacity-50 flex items-center justify-center cursor-pointer"
+                            className="w-full py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-500 disabled:opacity-50 text-white font-semibold text-sm transition-all shadow-[0_0_20px_rgba(37,99,235,0.25)] flex items-center justify-center gap-2 cursor-pointer"
                         >
-                            {isSubmitting ? <Loader size="sm" color="white" /> : 'Send'}
+                            {isSubmitting ? <Loader /> : "Transmit Message"}
                         </button>
                     </form>
                 ) : (
-                    <div className="py-6 flex flex-col items-center text-center">
-                        <div className="w-12 h-12 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center mb-4">
-                            <CheckCircle size={24} />
-                        </div>
-                        <h3 className="text-xl font-bold text-white mb-2">Message sent</h3>
-                        <p className="text-[var(--text-secondary)] text-sm max-w-xs mb-6">
-                            Your message has been sent. I will get back to you soon.
+                    <div className="py-12 text-center relative z-10">
+                        <CheckCircle className="mx-auto text-emerald-400 mb-4" size={48} />
+                        <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2 font-heading">Message Dispatched</h3>
+                        <p className="text-sm text-[var(--text-secondary)] max-w-xs mx-auto">
+                            Thank you for reaching out. I will respond to your transmission promptly.
                         </p>
-                        <button
-                            onClick={() => setIsSubmitted(false)}
-                            className="px-4 py-2 rounded-lg border border-[var(--border)] hover:border-[var(--text-muted)] text-xs font-medium transition-all cursor-pointer"
-                        >
-                            Send another message
-                        </button>
                     </div>
                 )}
             </div>
 
-            {/* Quick Links Footer */}
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-8 border-t border-[var(--border)] pt-6 text-xs text-[var(--text-muted)]">
-                <a href="mailto:contact@bhawukarora.app" className="flex items-center gap-1.5 hover:text-white transition-colors" title="Email">
+            <div className="mt-8 flex items-center justify-center gap-6 text-[var(--text-muted)]">
+                <a href="mailto:contact@bhawukarora.app" className="flex items-center gap-2 text-xs font-mono hover:text-white transition-colors">
                     <Mail size={14} /> contact@bhawukarora.app
-                </a>
-                <span className="hidden sm:inline text-[var(--border)]">|</span>
-                <a href="https://github.com/bhawuk-arora" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors" title="GitHub">
-                    <Github size={14} /> bhawuk-arora
-                </a>
-                <span className="hidden sm:inline text-[var(--border)]">|</span>
-                <a href="https://linkedin.com/in/bhawuk-arora" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors" title="LinkedIn">
-                    <Linkedin size={14} /> bhawuk-arora
                 </a>
             </div>
         </div>

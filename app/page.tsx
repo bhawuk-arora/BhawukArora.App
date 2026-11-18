@@ -49,68 +49,52 @@ export default async function HomePage() {
           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_2px_2px,var(--border)_1px,transparent_0)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-20 pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 flex flex-col justify-center">
-              <h1 className="text-5xl sm:text-6xl md:text-8xl font-black tracking-tighter mb-4 text-[var(--text-primary)] leading-[0.9] font-heading">
+            <div className="lg:col-span-12 flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono font-medium mb-6 w-fit backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>ARCHITECTING MLOPS & DISTRIBUTED INFRASTRUCTURE</span>
+              </div>
+
+              <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter mb-4 text-[var(--text-primary)] leading-[0.95] font-heading">
                 Bhawuk <span className="text-[var(--accent-blue)]">Arora.</span>
               </h1>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-6 text-[var(--text-secondary)] font-heading">
-                MLOps & Systems Engineering
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight mb-6 text-[var(--text-secondary)] font-heading">
+                MLOps & Systems Engineer
               </h2>
 
-              <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-xl font-medium">
-                {/* COMMENTED OUT: Corporate Kid in Tech ;) */}
-                Software Engineer specializing in MLOps, Distributed Systems, and Cloud Native infrastructure.
-                {/* COMMENTED OUT: Removed sub-description line
-                <span className="block mt-2 text-sm text-[var(--text-secondary)]">
-                  Architecting automated ML workflows, scaling reliable distributed infrastructure, and designing cloud-native systems.
-                </span>
-                */}
+              <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-2xl font-normal">
+                Designing resilient distributed pipelines, scalable GPU workloads, and automated cloud-native telemetry that turn complex ML models into reliable production systems.
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <Link
                   href="/projects"
-                  className="relative overflow-hidden px-8 py-3.5 rounded-xl text-white bg-blue-600 hover:bg-blue-500 transition-all font-bold shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 group border border-blue-400/15 text-sm cursor-pointer"
+                  className="px-6 py-3.5 rounded-xl text-white bg-blue-600 hover:bg-blue-500 transition-all font-semibold shadow-[0_0_25px_rgba(37,99,235,0.25)] hover:shadow-[0_0_35px_rgba(37,99,235,0.4)] flex items-center justify-center gap-2 group text-sm cursor-pointer"
                 >
-                  <span className="relative z-10">View My Work</span>
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform relative z-10" />
+                  <span>Explore Systems</span>
+                  <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    // COMMENTED OUT: Previous Cloudinary link
-                    // href="https://res.cloudinary.com/bhawuk-prod/image/upload/v1759812546/bhawuk-portfolio-react/bhawuk_resume.jpg"
-                    href="/Bhawuk_Arora_Resume.pdf"
-                    download="Bhawuk_Arora_Resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-5 py-3.5 rounded-xl text-[var(--accent-blue)] bg-blue-500/5 border border-blue-500/15 hover:border-blue-500/40 hover:bg-blue-500/10 backdrop-blur-sm transition-all font-bold text-center flex items-center justify-center gap-2 group/btn text-sm"
-                  >
-                    <span>Resume</span>
-                    <ExternalLink size={14} className="opacity-40 group-hover/btn:opacity-100 group-hover/btn:translate-y-[-1px] transition-all" />
-                  </a>
-                  <Link
-                    href="/blog"
-                    className="px-5 py-3.5 rounded-xl text-[var(--text-primary)] bg-[var(--bg-elevated)] border border-[var(--border)] hover:border-[var(--text-muted)] hover:bg-[var(--bg-card)] backdrop-blur-sm transition-all font-bold text-center flex items-center justify-center gap-2 group/blog text-sm"
-                  >
-                    <Calendar size={14} className="text-[var(--text-muted)] group-hover/blog:text-[var(--accent-blue)] transition-colors" />
-                    <span>Blog</span>
-                  </Link>
-                </div>
+                <a
+                  href="/Bhawuk_Arora_Resume.pdf"
+                  download="Bhawuk_Arora_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3.5 rounded-xl text-[var(--text-primary)] bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--accent-blue)]/50 hover:bg-[var(--bg-elevated)] transition-all font-semibold text-center flex items-center justify-center gap-2 group/btn text-sm"
+                >
+                  <span>Resume</span>
+                  <ExternalLink size={14} className="opacity-60 group-hover/btn:opacity-100 group-hover/btn:translate-y-[-1px] transition-all" />
+                </a>
+
+                <Link
+                  href="/blog"
+                  className="px-5 py-3.5 rounded-xl text-[var(--text-primary)] bg-[var(--bg-card)] border border-[var(--border)] hover:border-[var(--text-muted)] hover:bg-[var(--bg-elevated)] transition-all font-semibold text-center flex items-center justify-center gap-2 group/blog text-sm"
+                >
+                  <Calendar size={14} className="text-[var(--text-muted)] group-hover/blog:text-[var(--accent-blue)] transition-colors" />
+                  <span>Technical Blog</span>
+                </Link>
               </div>
             </div>
-
-            {/* COMMENTED OUT: HeroHandshake component is removed from here
-            <div className="lg:col-span-5 w-full flex items-center justify-center">
-              <HeroHandshake />
-            </div>
-            */}
-
-            {/* COMMENTED OUT: OperationsMonitor component was previously here
-            <div className="lg:col-span-5 w-full">
-              <OperationsMonitor />
-            </div>
-            */}
           </div>
         </section>
 

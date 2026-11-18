@@ -16,19 +16,23 @@ export default function ProjectsPage() {
 
                 {/* Header Section */}
                 <AnimatedSection>
-                    <div className="mb-20">
-                        <Link href="/" className="inline-flex items-center gap-2 text-xs font-bold font-mono text-[var(--text-muted)] hover:text-[var(--accent-blue)] transition-all mb-12 group uppercase tracking-widest">
-                            <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
-                            Back to Home
+                    <div className="mb-16">
+                        <Link href="/" className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[var(--text-muted)] hover:text-[var(--accent-blue)] transition-all mb-8 group uppercase tracking-widest">
+                            <ArrowLeft size={13} className="group-hover:-translate-x-1 transition-transform" />
+                            Return
                         </Link>
 
-                        <div className="flex flex-col gap-6">
-                            <h1 className="text-5xl md:text-7xl font-black text-[var(--text-primary)] tracking-tighter leading-[0.9]">
-                                Systems / <br />
-                                <span className="text-[var(--accent-blue)]">Solutions.</span>
+                        <div className="flex flex-col gap-4">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-mono font-medium w-fit">
+                                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                                <span>PORTFOLIO // PRODUCTION ARCHITECTURE</span>
+                            </div>
+                            <h1 className="text-4xl sm:text-6xl md:text-7xl font-black text-[var(--text-primary)] tracking-tighter leading-[0.95] font-heading">
+                                Systems &amp; <br />
+                                <span className="text-[var(--accent-blue)]">Engineered Solutions.</span>
                             </h1>
-                            <p className="text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed py-1">
-                                High-performance infrastructure, MLOps pipelines, and cloud-native solutions architected for scale.
+                            <p className="text-base sm:text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed">
+                                Resilient data platforms, inference pipelines, and distributed automation frameworks built for enterprise reliability.
                             </p>
                         </div>
                     </div>

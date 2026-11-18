@@ -80,14 +80,25 @@ export default function Navbar() {
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'glass-nav py-3' : 'bg-transparent py-5 border-transparent'}`}
             >
                 <div className="max-w-5xl md:max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between">
-                    {/* Logo */}
-                    <Link href={getLinkHref(isBlogDomain ? '/blog' : '/')} className="flex items-center gap-3 group shrink-0 outline-none">
-                        <div className="relative w-8 h-8 rounded-lg overflow-hidden border border-[var(--border)] group-hover:border-[var(--accent-blue)] transition-all">
-                            <img src="/logo.svg" alt="Bhawuk Logo" className="w-full h-full object-cover" />
+                    {/* Logo & Operational Status */}
+                    <div className="flex items-center gap-4">
+                        <Link href={getLinkHref(isBlogDomain ? '/blog' : '/')} className="flex items-center gap-2.5 group shrink-0 outline-none">
+                            <div className="relative w-7 h-7 rounded-lg overflow-hidden border border-[var(--border)] group-hover:border-[var(--accent-blue)] transition-all bg-[var(--bg-elevated)] flex items-center justify-center p-1">
+                                <img src="/logo.svg" alt="Bhawuk Logo" className="w-full h-full object-contain" />
+                            </div>
+                            <span className="text-base font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent-blue)] transition-colors">
+                                bhawuk<span className="text-[var(--accent-blue)]">.</span>
+                            </span>
+                        </Link>
+
+                        <div className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-[var(--bg-secondary)] border border-[var(--border)] text-[10px] font-mono text-[var(--text-muted)]">
+                            <span className="relative flex h-1.5 w-1.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                            </span>
+                            <span>NODE_ONLINE</span>
                         </div>
-                        <span className="text-lg font-bold tracking-tight text-[var(--text-primary)] group-hover:text-[var(--accent-blue)] transition-colors">
-                            Bhawuk.                        </span>
-                    </Link>
+                    </div>
 
                     {/* Desktop nav */}
                     <nav className="hidden md:flex items-center gap-6">
